@@ -27,6 +27,9 @@ Route::get('/admin/login', [AdminAuthController::class, 'showLoginForm'])->name(
 Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.login');
 Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 
+// Cetak PDF
+Route::get('/projects/cetak-pdf', [AdminProjectController::class, 'cetakPdf'])->name('projects.pdf');
+
 Route::prefix('admin')->middleware('auth')->group(function () {
 
     // Route Dashboard Admin

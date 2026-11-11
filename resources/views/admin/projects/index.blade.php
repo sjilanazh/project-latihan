@@ -3,7 +3,10 @@
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
     <h3 class="fw-normal text-secondary mb-0">Data Projects</h3>
-    <a href="{{ route('projects.create') }}" class="btn btn-primary px-3 shadow-sm">Tambah Project</a>
+    <header class="justify-content-end">
+    <a href="{{ route('projects.create') }}" class="btn btn-primary">Tambah Project</a>
+    <a href="{{ route('projects.pdf') }}" class="btn btn-danger" target="_blank">Cetak PDF</a>
+    </header>
 </div>
 
 <div class="card border-0 shadow-sm p-3 rounded-3">
