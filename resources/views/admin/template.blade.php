@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Admin Web Profile')</title>
     <link href="{{ asset('bootstrap-5.3.8-dist/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.8/css/dataTables.dataTables.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <script>
         const API_TOKEN = "{{ session('api_token') }}";
+        console.log("API Token:", API_TOKEN);
     </script>
 </head>
 <style>
@@ -96,6 +98,7 @@
         <h5 class="text-center text-white py-3">Admin Menu</h5>
         <a href="{{ route('admin.dashboard') }}">Dashboard</a>
         <a href="{{ route('projects.index') }}">Data Project</a>
+        <a href="{{ route('admin.users') }}">Data Users</a>
     </div>
 
     <div class="content p-3 d-flex flex-column">
@@ -114,7 +117,9 @@
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     @stack('scripts')
+    @yield('scripts')
 </body>
 </html>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminProjectController;
+use App\Http\Controllers\api\UserController;
 use App\Http\Controllers\Auth\AdminAuthController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ProjectController;
@@ -29,9 +30,9 @@ Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admi
 
 // Cetak PDF
 Route::get('/projects/cetak-pdf', [AdminProjectController::class, 'cetakPdf'])->name('projects.pdf');
+Route::get('/users', [UserController::class, 'index'])->name('admin.users');
 
 Route::prefix('admin')->middleware('auth')->group(function () {
-
     // Route Dashboard Admin
     Route::get('/', function () {
         return view('admin.home');

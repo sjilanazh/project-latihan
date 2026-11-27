@@ -14,6 +14,12 @@ class UserController extends Controller
     public function index()
     {
         //
+        return view('admin.users');
+    }
+
+    public function getData()
+    {
+        //
         $users = User::all();
 
         return response()->json(
@@ -88,20 +94,13 @@ class UserController extends Controller
         try {
             $user = User::findOrFail($id);
 
-            $validate = $request->validate([
-                'name' => 'nullable|string|max:255',
-                'email' => 'nullable|string|email|max:255|unique:users,email,' . $user->id,
-                'password' => 'nullable|string|min:8',
-                'phone' => 'nullable|string',
-                'address' => 'nullable|string',
-                'role' => 'nullable|string',
-            ]);
+            $data = $request->all();
 
-            if (isset($validate['password'])) {
-                $validate['password'] = bcrypt($validate['password']);
+            if (request()->has('password')) {
+                $data['password'] = bcrypt($data['password']);
             }
 
-            $user->update($validate);
+            $user->update($data);
 
             return response()->json(
                 [
